@@ -11,6 +11,8 @@ const fruits = [
       heatLevel: '2'},
     { fruit: 'watermelon',
       heatLevel: '-1'},
+    { fruit: 'pear',
+      heatlevel: '0'}
 ]
 
 
