@@ -31,7 +31,7 @@ searchInput.addEventListener("input", (e) => {
             return fruit.name.includes(value)
         }))
     } else {
-        
+        clearList()
     }
 
 })
@@ -39,6 +39,8 @@ searchInput.addEventListener("input", (e) => {
 // creating and declaring a function called "setList"
 // setList takes in a param of "results"
 function setList(results){
+
+    clearList()
 
     for (const fruit of results){
         // creating a li element for each result item
@@ -56,4 +58,29 @@ function setList(results){
         // appending the result item to the list
         list.appendChild(resultItem)
     }
+
+    if (results.length === 0 ){
+        noResults()
+    }
+}
+
+function clearList(){
+    // looping through each child of the search results list and remove each child
+    while (list.firstChild){
+        list.removeChild(list.firstChild)
+    }
+}
+
+function noResults(){
+    // create an element for the error; a list item ("li")
+    const error = document.createElement('li')
+    // adding a class name of "error-message" to our error element
+    error.classList.add('error-message')
+
+    // creating text for our element
+    const text = document.createTextNode('No results found. Sorry!')
+    // appending the text to our element
+    error.appendChild(text)
+    // appending the error to our list element
+    list.appendChild(error)
 }
